@@ -64,8 +64,8 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config --global user.name "zhigehe"
-          git config --global user.email "17086898389@163.com"
+          git config --global user.name "genkinj"
+          git config --global user.email "genkinj@gmail.com"
           git add .
           git commit -m "$(TZ=Asia/Shanghai date '+%Y-%m-%d %H:%M')"
           git pull --rebase origin main

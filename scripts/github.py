@@ -12,7 +12,7 @@ headers = {
 def delete_workflow_runs():
     # 获取所有工作流运行记录
     request = urllib.request.Request(
-        "https://api.github.com/repos/zhigehe/bulwark/actions/runs?per_page=20&page=2&order=asc", 
+        "https://api.github.com/repos/genkinj/bulwark/actions/runs?per_page=20&page=2&order=asc", 
         headers=headers
     )
     response = urllib.request.urlopen(request)
@@ -25,7 +25,7 @@ def delete_workflow_runs():
     for run in runs["workflow_runs"]:
         run_id = run["id"]
         # 构造删除请求
-        delete_url = f"https://api.github.com/repos/zhigehe/bulwark/actions/runs/{run_id}"
+        delete_url = f"https://api.github.com/repos/genkinj/bulwark/actions/runs/{run_id}"
         delete_request = urllib.request.Request(
             delete_url,
             method="DELETE",
