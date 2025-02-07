@@ -49,7 +49,7 @@ def create_summary(text, language="en"):
             return " ".join(text.split()[:50]) + "..."
 
 
-def process_json_file(json_file, output_dir):
+def process_json_file(json_file, output_dir, folder):
     with open(json_file, "r", encoding="utf-8") as f:
         data = json.load(f)
 
@@ -57,6 +57,7 @@ def process_json_file(json_file, output_dir):
 
     for item in items:
         kind = item.get("kind", 1)
+        kind_name = "news"
         if kind == 2:
             continue
 
@@ -70,7 +71,13 @@ def process_json_file(json_file, output_dir):
 
         # Sanitize filename
         filename = re.sub(r'[\\/*?:"<>|]', "", filename) + ".md"
-        filepath = os.path.join(output_dir, filename)
+        
+        # 直接按语言分类
+        lang_dir = os.path.join(output_dir, language, kind_name, folder)
+        if not os.path.exists(lang_dir):
+            os.makedirs(lang_dir)
+        filepath = os.path.join(lang_dir, filename)
+        print(filepath)
 
         if os.path.exists(filepath):
             continue
@@ -147,7 +154,8 @@ def main():
     clone_repo()
 
     data_dir = os.path.join("news", "news", "data")
-    content_dir = "content/news"
+    # 修改基础内容目录
+    content_dir = "content"
 
     if not os.path.exists(data_dir):
         print(f"Data directory not found: {data_dir}")
@@ -164,14 +172,10 @@ def main():
             if not os.path.isdir(folder_path):
                 continue
 
-            output_folder = os.path.join(content_dir, folder)
-            if not os.path.exists(output_folder):
-                os.makedirs(output_folder)
-
             for root, _, files in os.walk(folder_path):
                 for file in files:
                     if file.endswith(".json"):
-                        process_json_file(os.path.join(root, file), output_folder)
+                        process_json_file(os.path.join(root, file), content_dir, folder)
     finally:
         # Clean up the cloned repository
         if os.path.exists("news"):

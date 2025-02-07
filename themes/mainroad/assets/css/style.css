@@ -1150,6 +1150,11 @@ textarea {
 	display: block;
 }
 
+.widget-languages__link.active {
+    font-weight: bold;
+    color: #f90505;
+}
+
 .widget-languages__link:hover .widget-languages__link-btn {
 	color: #fff;
 	background: {{ $highlightColor }};
