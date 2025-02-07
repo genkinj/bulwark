@@ -112,5 +112,5 @@ timeZone = "Asia/Shanghai"
   cached = true
   url = "https://google.com/search"
   [Params.widgets.search.input]
-    name = "sitesearch"
-    pre = "site:news.hmzwx.com/"
+    name = "q"
+    pre = "site:news.hmzwx.com"
