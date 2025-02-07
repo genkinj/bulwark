@@ -17,8 +17,10 @@ def clone_repo():
 def create_summary(text, language="en"):
     """Generate a summary of the text using LexRank"""
     text = text.strip()
-    # Remove HTML tags
+    # Remove HTML tags, css, javascript
     text = re.sub(r"<[^>]*>", "", text)
+    text = re.sub(r"<style[^>]*>.*?</style>", "", text)
+    text = re.sub(r"<script[^>]*>.*?</script>", "", text)
     if not text:
         return ""
 
