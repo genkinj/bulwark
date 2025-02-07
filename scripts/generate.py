@@ -66,7 +66,7 @@ def process_json_file(json_file, output_dir):
         language = item.get("language", "")
         if not language:
             continue
-        filename = f"{file_id}.{language}" if file_id else f"{hashlib.md5((title + item.get("source", "")).encode('utf-8')).hexdigest()}{'.' + language}"
+        filename = f"{file_id}.{language}" if file_id else f"{hashlib.md5((title + item.get("pub_date", "")).encode('utf-8')).hexdigest()}{'.' + language}"
 
         # Sanitize filename
         filename = re.sub(r'[\\/*?:"<>|]', "", filename) + ".md"
