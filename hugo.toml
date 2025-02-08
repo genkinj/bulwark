@@ -9,7 +9,7 @@ timeZone = "Asia/Shanghai"
 [services.disqus]
   shortname = "" # Enable Disqus by entering your Disqus shortname
 [services.googleAnalytics]
-  ID = "" # Enable Google Analytics by entering your tracking ID
+  ID = "G-FMLBTHVSXW" # Enable Google Analytics by entering your tracking ID
 
 [languages]
   [languages.en]
@@ -112,5 +112,5 @@ timeZone = "Asia/Shanghai"
   cached = true
   url = "https://google.com/search"
   [Params.widgets.search.input]
-    name = "q"
+    name = "sitesearch"
     pre = "site:news.hmzwx.com"
